@@ -9,8 +9,7 @@ app = Flask(__name__)
 
 @app.get("/")
 def root():
-    return "Please, inform model username in path request"
-
+    return "Please, inform model's username in path request"
 
 @app.get('/<model_name>')
 def get_model(model_name):  # put application's code here
@@ -31,6 +30,13 @@ def get_model(model_name):  # put application's code here
 
     else:
         raise Exception("There is a problem in your request")
+
+@app.post("/<model_name>")
+def post_model(model_name):
+    return f"""
+        <h2>POST method not allowed, use GET instead</h2>
+        <img src={environ.get('GIF_IMAGE')} alt='gia_baker'>
+    """
 
 if __name__ == '__main__':
     app.run()

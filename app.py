@@ -37,7 +37,6 @@ def get_model(model_name):  # put application's code here
 def verify_if_favorites_is_online():
 
     favorites_online = []
-    #favorites = list(environ.get('FAVORITES'))
     favorites = environ.get('FAVORITES').split(',')
 
     for favorite in favorites:
@@ -56,10 +55,10 @@ def verify_if_favorites_is_online():
     return jsonify(favorites_online), 200
 
 
-@app.post("/<model_name>")
-def post_model(model_name):
+@app.route("/<string>", methods=['POST', 'PUT', 'PATCH', 'DELETE'])
+def post_model(string):
     return f"""
-        <h2>POST method not allowed, use GET instead</h2>
+        <h2>method not allowed, use GET instead</h2>
         <img src={environ.get('GIF_IMAGE')} alt='gia_baker'>
     """
 

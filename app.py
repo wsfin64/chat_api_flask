@@ -63,5 +63,15 @@ def post_model(string):
     """
 
 
+@app.post('/')
+def default():
+    return f"""
+     <video controls autoplay>
+    <source src="{environ.get('VIDEO')}" type="video/mp4">
+    Your browser does not support the video tag.
+</video> 
+"""
+
+
 if __name__ == '__main__':
     app.run()
